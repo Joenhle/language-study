@@ -1,4 +1,4 @@
-package main
+package other
 
 import (
 	"fmt"
@@ -21,6 +21,6 @@ func Method1() {
 	}
 }
 
-func main() {
-	Method1()
-}
+//func main() {
+//	Method1()
+//}
