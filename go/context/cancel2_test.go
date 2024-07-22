@@ -40,14 +40,13 @@ func TestDoTask(t *testing.T) {
 		}
 	}
 	for _, f := range []func(ctx2 context.Context) error{f1, f2} {
-		f := f
-		go func() {
+		go func(f func(context.Context) error) {
 			if err := f(ctx); err != nil {
 				cancel(err)
 			} else {
 				suc_chan <- struct{}{}
 			}
-		}()
+		}(f)
 	}
 	i := 0
 LOOP:
